@@ -5,3 +5,4 @@ Flask-WTF==1.1.1
 loginform==1.2.0
 SQLAlchemy==2.0.4
 Werkzeug==2.2.3
+sqlalchemy_serializer==1.4.1
