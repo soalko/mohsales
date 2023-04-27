@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добро пожаловать на сайт MOHSales! Здесь вы можете купить билеты в разные направления!</h1>
+<p>
+</p>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="static/img/logo.png" class="d-block w-100" alt="First">
+        </div>
+    </div>
+</div>
+<p>
+</p>
+<h2>Текущие рейсы:</h2>
+<p>
+</p>
+{% for item in flt%}
+<div class="card-deck">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">{{item.city1}} - {{item.city2}}</h4>
+            <p class="card-text">Самолет - {{item.plane}}</p>
+            <img src="/static/img/{{ item.plane }}.png">
+            <p></p>
+            <p> Дата отправления - {{item.date}}, Время отправления - {{item.time}} </p>
+            <p>Авиакомпания: {{ item.user.name }}</p>
+            {% if current_user.is_authenticated and current_user.id == item.user_id%}
+            <div>
+                <a href="/flt/{{ item.id }}" class="btn btn-warning">
+                    Изменить
+                </a>
+                <a href="/flt_delete/{{ item.id }}" class="btn btn-danger">
+                    Удалить
+                </a>
+            </div>
+            {% else %}
+            <div>
+                <a href="{{ url_for('buy', my_var=item.id) }}" class="btn btn-primary">
+                    Купить билет
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<p>
+</p>
+{% endfor %}
+{% endblock %}

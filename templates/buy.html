@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Оплата билета</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.email.label }}<br>
+        {{ form.email(class="form-control", type="email") }}<br>
+        {% for error in form.email.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.card_num.label }}<br>
+        {{ form.card_num(class="form-control") }}<br>
+        {% for error in form.card_num.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.srok.label }}<br>
+        {{ form.srok(class="form-control") }}<br>
+        {% for error in form.srok.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.cvc.label }}<br>
+        {{ form.cvc(class="form-control") }}<br>
+        {% for error in form.cvc.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary", onclick='saveFile()') }}</p>
+    <div>{{ message }}</div>
+</form>
+{% endblock %}
+
