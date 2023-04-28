@@ -73,7 +73,7 @@ def buy():
         homeDir = os.path.expanduser('~')
 
         def saveFile():
-            f = open(f'{homeDir}\Desktop\Ticket.txt', encoding='utf-8', mode='w')
+            f = open(f'{homeDir}/Desktop/Ticket.txt', encoding='utf-8', mode='w')
             f.write(f'Вы купили билет на рейс {b} - {c}. Спасибо, что выбрали MOHSales!\n')
             f.write(f'\n*****\n\n')
             f.write(f'Адрес электронной почты: {form.email.data}\n')
