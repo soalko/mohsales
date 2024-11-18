@@ -173,6 +173,7 @@ def edit_flt(id):
         if flt:
             flt.city1 = form.city1.data
             flt.city2 = form.city2.data
+            flt.plane = form.plane.data
             db_sess.commit()
             return redirect('/')
         else:
